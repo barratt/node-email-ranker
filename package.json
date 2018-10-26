@@ -1,0 +1,30 @@
+{
+  "name": "email-validator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barratt/node-email-validator.git"
+  },
+  "author": "barratt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/barratt/node-email-validator/issues"
+  },
+  "homepage": "https://github.com/barratt/node-email-validator#readme",
+  "dependencies": {
+    "async": "^2.6.1",
+    "await-exec": "^0.1.2",
+    "child-process-promise": "^2.2.1",
+    "express": "^4.16.4",
+    "telnet-client": "^0.16.1",
+    "validator": "^10.8.0"
+  },
+  "jshintConfig": {
+    "esversion": 6
+  }
+}
