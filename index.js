@@ -8,6 +8,9 @@ const webPort   = process.env['PORT']   || 3005;
 const sender    = process.env['SENDER'] || 'sender@example.com';
 const mailPorts = [ 25, 587, 465 ]; // We will test for mail servers on these ports.
 
+// list of free/temp providers from https://gist.github.com/adamloving/4401361
+const freeProviders = require('fs').readFileSync('freeproviders.txt');
+
 const app = express();
 
 app.listen(webPort, () => {
@@ -43,17 +46,19 @@ app.get('/', async function(req, res) {
         for (let port of mailPorts)
             permutations.push(checkForkMailbox(email, record.exchange, port));
     
+    // Check if its from a free provider.
+    let free = freeProviders.indexOf(domain) > -1 ? 1 : 0;
+
     try {
         // If this throws it returns the exeption straight away
         // If you know a better way please create a PR.
         let responses = await Promise.all(permutations);
     } catch (e) {
 
-        console.log("yo - %s", e)
-        return res.json(ok(1, 1));
+        return res.json(ok(1, 1, free));
     }
-    console.log("What")
-    return res.json(ok(1, 0));
+
+    return res.json(ok(1, 0, free));
 });
 
 async function checkForkMailbox(email, server, port) {
@@ -79,11 +84,17 @@ async function resolveMx(domain) {
     });
 }
 
-let ok = (valid, reachable) => {
-    return {
+let ok = (valid, reachable, free) => {
+    let response = {
         success: 1,
-        valid, reachable
-    }
+        valid, 
+        reachable
+    };
+
+    if (typeof free != 'undefined')
+        response.free = free;
+
+    return response
 }
 
 let bad = (error) => {
