@@ -8,7 +8,7 @@ To use:
 - clone the repo
 - run ```npm i``` to install dependencies
 - run ```node index.js```
-- Send a get request to localhost:3005/?e=<EMAIL ADDRESS>
+- Send a get request to localhost:3005/?e=[EMAIL ADDRESS]
 
 Environment variables:
 
