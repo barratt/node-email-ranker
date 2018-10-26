@@ -12,5 +12,5 @@ To use:
 
 Environment variables:
 
-PORT:   the port that the web server will listen on
-SENDER: the email address to use when sending a dummy email
+- PORT:   the port that the web server will listen on
+- SENDER: the email address to use when sending a dummy email
