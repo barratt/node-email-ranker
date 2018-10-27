@@ -1,4 +1,4 @@
-# node-email-ranker
+# node-email-verify
 
 A simple nodejs webserver app that you can pass an email and it will validate and send a simulated email
 to check if its a real inbox (not all mail servers support this and can return invalid responses)
