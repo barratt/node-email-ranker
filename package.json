@@ -17,11 +17,8 @@
   },
   "homepage": "https://github.com/barratt/node-email-validator#readme",
   "dependencies": {
-    "async": "^2.6.1",
     "await-exec": "^0.1.2",
-    "child-process-promise": "^2.2.1",
     "express": "^4.16.4",
-    "telnet-client": "^0.16.1",
     "validator": "^10.8.0"
   },
   "jshintConfig": {

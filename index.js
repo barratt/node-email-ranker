@@ -2,7 +2,6 @@ const validator = require('validator');
 const express   = require('express');
 const exec      = require('await-exec')
 const dns       = require('dns');
-const async     = require('async');
 
 const webPort   = process.env['PORT']   || 3005;
 const sender    = process.env['SENDER'] || 'sender@example.com';
@@ -18,11 +17,8 @@ app.listen(webPort, () => {
 });
 
 // Takes an e query param (the email address) and returns a success 1 if valid and a reachable 1 if 
-app.get('/', async function(req, res) {
-    let email = req.query.e;
-
-    if (!email)
-        return res.json(bad('No email param'));
+app.get('/:email', async (req, res) => {
+    let email = req.params.email;
 
     if (!validator.isEmail(email))
         return res.json(bad('email invalid'));
