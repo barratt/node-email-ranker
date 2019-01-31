@@ -1,5 +1,7 @@
 FROM node:8
 
+RUN apt update && apt install telnet
+
 # Create app directory
 WORKDIR /usr/src/app
 
